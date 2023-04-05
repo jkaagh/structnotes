@@ -179,6 +179,8 @@ const App = () => {
             children: [{ text: "" }],
         };
 
+
+        //handles ctrl+enter while on root level.
         if(Editor.path(editor, editor.selection.anchor).length === 2){
             const point = Editor.end(editor, editor.selection); //gets the end of the current selection
             Transforms.insertNodes(editor, paragraph, { at: point });
@@ -222,21 +224,6 @@ const App = () => {
             Transforms.select(editor, nextPath);
         }
     },
-
-
-            //legacy, commented to keep original explaining comments as reminders.
-            //   const point = Editor.end(editor, editor.selection); //gets the end of the current selection
-            //   const nextPoint = Editor.after(editor, point); //gets the point right after the end of the selection
-        
-            //   if (nextPoint) {
-            //     //if a point after the current selection even exists, select that point
-            //     Transforms.select(editor, nextPoint);
-            //   } else {
-            //     //if it doesnt, insert a paragraph element at end of current selection, and selects it
-            //     const paragraph = { type: "paragraph", children: [{ text: "" }] };
-            //     Transforms.insertNodes(editor, paragraph, { at: point });
-            //     Transforms.select(editor, point);
-            //   }
     
     [editor]
   );
